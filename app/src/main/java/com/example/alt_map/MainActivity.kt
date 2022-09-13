@@ -2,14 +2,8 @@ package com.example.alt_map
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.provider.Settings
 import android.widget.FrameLayout
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentTransaction
-import androidx.navigation.NavController
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
@@ -26,14 +20,14 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        supportFragmentManager.beginTransaction().add(mainFrameLayout.id, Map()).commit()
+        supportFragmentManager.beginTransaction().add(mainFrameLayout.id, Map_fragment()).commit()
 
         navigation.setOnNavigationItemSelectedListener {
             replaceFragment(
                 when (it.itemId) {
-                    R.id.navigation_map -> Map()
-                    R.id.navigation_weather -> weather()
-                    else -> settings()
+                    R.id.navigation_map -> Map_fragment()
+                    R.id.navigation_weather -> Weather_fragment()
+                    else -> Settings_fragment()
                 }
             )
             true
