@@ -13,7 +13,7 @@
         app:cameraTargetLat="35.6632493"
         app:cameraTargetLng="150.922433"
         app:cameraTilt="30"
-        app:cameraZoom="17"
+        app:cameraZoom="18"
         app:layout_constraintBottom_toTopOf="@+id/map_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -23,8 +23,7 @@
         app:uiRotateGestures="true"
         app:uiScrollGestures="false"
         app:uiTiltGestures="true"
-        app:uiZoomControls="false"
-        app:uiZoomGestures="true" />
+        app:uiZoomControls="false" />
 
     <Button
         android:id="@+id/map_button"

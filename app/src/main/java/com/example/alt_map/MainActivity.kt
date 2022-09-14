@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.widget.FrameLayout
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 class MainActivity : AppCompatActivity() {
 
@@ -22,6 +24,11 @@ class MainActivity : AppCompatActivity() {
 
         supportFragmentManager.beginTransaction().add(mainFrameLayout.id, Map_fragment()).commit()
 
+//        val weather = Retrofit.Builder()
+//            .baseUrl("http://api.openweathermap.org/data/2.5/weather?lat=35.6632493&lon=128.4141269&APPID=814ea831f9adecdf0164966dbecab1ce")
+//            .addConverterFactory(GsonConverterFactory.create())
+//            .build()
+
         navigation.setOnNavigationItemSelectedListener {
             replaceFragment(
                 when (it.itemId) {
@@ -32,13 +39,9 @@ class MainActivity : AppCompatActivity() {
             )
             true
         }
-
-//        val navController = findNavController(R.id.mainFrameLayout) // 네비게이션 정의 된 걸 가져옴
-//        val main_fragment = findViewById<FrameLayout>(R.id.mainFrameLayout)
-//        val main_nav = findViewById<BottomNavigationView>(R.id.navigation)
     }
 
-    private fun replaceFragment(fragment: Fragment) {
+    fun replaceFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction().replace(mainFrameLayout.id, fragment).commit()
     }
 }
