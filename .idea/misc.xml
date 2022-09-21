@@ -8,15 +8,18 @@
         <entry key="app/src/main/res/drawable/button_motion.xml" value="0.216" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.225" />
         <entry key="app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.139" />
+        <entry key="app/src/main/res/drawable/latout_background.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/meun_click_color.xml" value="0.18" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2865615844726563" />
         <entry key="app/src/main/res/layout/fragment_cloud.xml" value="0.38177083333333334" />
         <entry key="app/src/main/res/layout/fragment_map.xml" value="0.34923492349234925" />
         <entry key="app/src/main/res/layout/fragment_maps.xml" value="0.2609375" />
         <entry key="app/src/main/res/layout/fragment_rain.xml" value="0.38177083333333334" />
-        <entry key="app/src/main/res/layout/fragment_settings.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_settings.xml" value="0.3686721801757813" />
         <entry key="app/src/main/res/layout/fragment_sunny.xml" value="0.38177083333333334" />
-        <entry key="app/src/main/res/layout/fragment_weather.xml" value="0.3925064086914063" />
+        <entry key="app/src/main/res/layout/fragment_weather.xml" value="0.375" />
+        <entry key="app/src/main/res/layout/layout_background.xml" value="0.38958333333333334" />
+        <entry key="app/src/main/res/layout/list_item_weather.xml" value="0.38958333333333334" />
         <entry key="app/src/main/res/menu/bottom_nav.xml" value="0.23645833333333333" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.3385" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.195" />
