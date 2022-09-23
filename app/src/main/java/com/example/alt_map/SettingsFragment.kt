@@ -21,6 +21,7 @@ import com.bumptech.glide.Glide
 
 class SettingsFragment : Fragment() {
 
+    private val OPEN_GALLERY = 1
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -37,5 +38,15 @@ class SettingsFragment : Fragment() {
         save.setOnClickListener{
             App.prefs.myEditText = name.text.toString()
         }
+        val gallery = requireView().findViewById<Button>(R.id.gallery)
+        val circularImageView = requireView().findViewById<ImageView>(R.id.circleImageView)
+        gallery.setOnClickListener{
+            openGallery()
+        }
+    }
+    private fun openGallery(){
+        val intent: Intent = Intent(Intent.ACTION_GET_CONTENT)
+        intent.setType("image/*")
+        startActivityForResult(intent, OPEN_GALLERY)
     }
 }
