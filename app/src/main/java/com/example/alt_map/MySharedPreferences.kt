@@ -17,5 +17,5 @@ class MySharedPreferences(context:Context) {
 
     var myUri: String?
         get() = prefs.getString(prefsfilename,"")
-        set(value) = prefs.edit().putString(prefskeyedt, value).apply()
+        set(value) = prefs.edit().putString(prefskeyedt, value).apply()//
 }
