@@ -55,8 +55,11 @@ class SettingsFragment : Fragment() {
                 var currentImageUrl: Uri? = data?.data
                 Log.d("TAGTAG", currentImageUrl.toString())
 
-                var imageView = requireView().findViewById<ImageView>(R.id.circleImageView)
+                App.prefs.myUri = currentImageUrl.toString() // SharedPreferences에 String로 변형하여 저장
 
+                val URI: Uri = Uri.parse(App.prefs.myUri) // 저장된 값을 URI변수로 이동
+
+                var imageView = requireView().findViewById<ImageView>(R.id.circleImageView)
                 Glide.with(requireContext()).load(currentImageUrl).circleCrop().into(imageView)
 
 
