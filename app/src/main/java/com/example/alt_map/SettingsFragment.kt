@@ -24,7 +24,7 @@ import java.lang.Exception
 class SettingsFragment : Fragment() {
     lateinit var  imageView : ImageView
     private val OPEN_GALLERY = 1
-    private var resolver = requireActivity().contentResolver.toString()
+    private var resolver = activity?.contentResolver
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_settings, container, false)
@@ -48,14 +48,13 @@ class SettingsFragment : Fragment() {
     }
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?,) {
         super.onActivityResult(requestCode, resultCode, data)
-        imageView = requireView().findViewById(R.id.circleImageView)
         if(resultCode == Activity.RESULT_OK){ //만약에 정상적으로 코드가 실행 됬다면
             if (requestCode == OPEN_GALLERY){ // 갤러리가 켜졌다면
 
                 var currentImageUrl : Uri? = data?.data
 
                 try { //contentResolver
-                    val bitmap = MediaStore.Images.Media.getContentUri(resolver,currentImageUrl)
+                    val bitmap = MediaStore.Images.Media.getBitmap(resolver,currentImageUrl)
                     imageView.setImageBitmap(bitmap)
 
                 }catch (e:Exception){
