@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val save = findViewById<Button>(R.id.save)
         val gallery = findViewById<Button>(R.id.gallery)
-        circularImageView = findViewById(R.id.circleImageView)
+        ImageView = findViewById(R.id.circleImageView)
         gallery.setOnClickListener{
             openGallery()
         }
