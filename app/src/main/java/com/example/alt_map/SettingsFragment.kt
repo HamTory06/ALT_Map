@@ -22,50 +22,51 @@ import com.bumptech.glide.Glide
 import java.lang.Exception
 
 class SettingsFragment : Fragment() {
-    lateinit var  imageView : ImageView
     private val OPEN_GALLERY = 1
-    private var resolver = activity?.contentResolver
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+    ): View? {
         return inflater.inflate(R.layout.fragment_settings, container, false)
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val save = requireView().findViewById<Button>(R.id.save)
         val name = requireView().findViewById<EditText>(R.id.name)
         val imageView = requireView().findViewById<ImageView>(R.id.circleImageView)
         name.setText(App.prefs.myEditText)
-        if(!(App.prefs.myEditText.isNullOrBlank()))
+        if (!(App.prefs.myEditText.isNullOrBlank()))
             Log.d("TAG", App.prefs.myEditText!!)
 
-        save.setOnClickListener{
+        save.setOnClickListener {
             App.prefs.myEditText = name.text.toString()
         }
         val gallery = requireView().findViewById<Button>(R.id.gallery)
-        gallery.setOnClickListener{
+        gallery.setOnClickListener {
             openGallery()
         }
     }
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?,) {
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if(resultCode == Activity.RESULT_OK){ //만약에 정상적으로 코드가 실행 됬다면
-            if (requestCode == OPEN_GALLERY){ // 갤러리가 켜졌다면
+        if (resultCode == Activity.RESULT_OK) { //만약에 정상적으로 코드가 실행 됬다면
+            if (requestCode == OPEN_GALLERY) { // 갤러리가 켜졌다면
 
-                var currentImageUrl : Uri? = data?.data
+                var currentImageUrl: Uri? = data?.data
+                Log.d("TAGTAG", currentImageUrl.toString())
 
-                try { //contentResolver
-                    val bitmap = MediaStore.Images.Media.getBitmap(resolver,currentImageUrl)
-                    imageView.setImageBitmap(bitmap)
+                var imageView = requireView().findViewById<ImageView>(R.id.circleImageView)
 
-                }catch (e:Exception){
-                    e.printStackTrace()
-                }
+                Glide.with(requireContext()).load(currentImageUrl).circleCrop().into(imageView)
+
+
             }
-        }else{ // 코드가 정상적으로 실행 되지 않았다면
-            Log.d("에러","something wrong")
+        } else { // 코드가 정상적으로 실행 되지 않았다면
+            Log.d("에러", "something wrong")
         }
     }
-    private fun openGallery(){
+
+    private fun openGallery() {
         val intent: Intent = Intent(Intent.ACTION_GET_CONTENT)
         intent.setType("image/*")
         startActivityForResult(intent, OPEN_GALLERY)
