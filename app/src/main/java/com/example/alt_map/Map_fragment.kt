@@ -34,7 +34,6 @@ class Map_fragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val main = (activity as MainActivity) //MainActivity에서 사용하는 replaceFragment함수 사용
         mainFrameLayout = main.findViewById(R.id.mainFrameLayout)
-
         val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
         mapFragment?.getMapAsync(callback)
         val button = view.findViewById<Button>(R.id.map_button)
