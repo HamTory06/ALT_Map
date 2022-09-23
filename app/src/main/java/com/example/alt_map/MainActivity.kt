@@ -51,8 +51,10 @@ class MainActivity : AppCompatActivity() {
             true
         }
     }
-    @Overrides
-    public fun onAvtivityResult(requestCode: Int, resultCode: Int, data: Intent?){
+
+
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?){
         super.onActivityResult(requestCode,resultCode,data)
 
         if(resultCode == Activity.RESULT_OK){
@@ -73,7 +75,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    annotation class Overrides
 
     fun replaceFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction().replace(mainFrameLayout.id, fragment).commit()
