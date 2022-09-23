@@ -33,6 +33,12 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        val save = findViewById<Button>(R.id.save)
+        val gallery = findViewById<Button>(R.id.gallery)
+        circularImageView = findViewById(R.id.circleImageView)
+        gallery.setOnClickListener{
+            openGallery()
+        }
         supportFragmentManager.beginTransaction().add(mainFrameLayout.id, Map_fragment()).commit()
         navigation.setOnNavigationItemSelectedListener {
             replaceFragment(
@@ -45,23 +51,19 @@ class MainActivity : AppCompatActivity() {
             true
         }
     }
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val save = findViewById<Button>(R.id.save)
-        val gallery = findViewById<Button>(R.id.gallery)
-        circularImageView = findViewById(R.id.circleImageView)
-        gallery.setOnClickListener{
-            openGallery()
-        }
-    }
-    override fun onAvtivityResult(requestCode: Int, resultCode: Int, data: Intent?){
-        super.onActivityResult(requestCode, resultCode, data)
+    @Overrides
+    public fun onAvtivityResult(requestCode: Int, resultCode: Int, data: Intent?){
+        super.onActivityResult(requestCode,resultCode,data)
 
         if(resultCode == Activity.RESULT_OK){
             if (requestCode == OPEN_GALLERY){
+
                 var currentImageUrl : Uri? = data?.data
+
                 try {
-                    val bitmap = MediaStore.Images.Media.getContentUri(contentResolver,currentImageUrl)
+                    val bitmap = MediaStore.Images.Media.getBitmap(contentResolver,currentImageUrl)
                     circularImageView.setImageBitmap(bitmap)
+
                 }catch (e:Exception){
                     e.printStackTrace()
                 }
@@ -70,6 +72,8 @@ class MainActivity : AppCompatActivity() {
             Log.d("ActivityResult","something wrong")
         }
     }
+
+    annotation class Overrides
 
     fun replaceFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction().replace(mainFrameLayout.id, fragment).commit()
