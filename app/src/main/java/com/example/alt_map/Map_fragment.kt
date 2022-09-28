@@ -36,18 +36,5 @@ class Map_fragment : Fragment() {
         mainFrameLayout = main.findViewById(R.id.mainFrameLayout)
         val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
         mapFragment?.getMapAsync(callback)
-        val button = view.findViewById<Button>(R.id.map_button)
-        button.setOnClickListener{
-            val random = (0..2).random() //랜덤으로 버튼 누르면 3개프레그먼트중 1개 보여줌 (Rain,Cloud,Sunny)
-            main.replaceFragment(
-                when(random){
-                    0 -> Rain_fragment()
-                    1 -> Cloud_fragment()
-                    else -> Sunny_fragment()
-                }
-            )
-            true
-        }
     }
-
 }

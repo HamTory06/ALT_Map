@@ -27,7 +27,7 @@ class SettingsFragment : Fragment() {
         val save = requireView().findViewById<Button>(R.id.save)//save 버튼 findViewById
         val name = requireView().findViewById<EditText>(R.id.name)//name 들어가는 EditText
         val imageView = requireView().findViewById<ImageView>(R.id.circleImageView)
-        Glide.with(requireContext()).load(App.prefs.myUri).circleCrop().into(imageView)
+        Glide.with(requireContext()).load(App.Prefs.myUri).circleCrop().into(imageView)
         name.setText(App.Prefs.myEditText)
         save.setOnClickListener {
             App.Prefs.myEditText = name.text.toString()
@@ -46,18 +46,18 @@ class SettingsFragment : Fragment() {
         super.onActivityResult(requestCode, resultCode, data)
         val imageView = requireView().findViewById<ImageView>(R.id.circleImageView)
         val save = requireView().findViewById<Button>(R.id.save)//save 버튼 findViewById
-        Glide.with(requireContext()).load(App.prefs.myUri).circleCrop().into(imageView)
+        Glide.with(requireContext()).load(App.Prefs.myUri).circleCrop().into(imageView)
         if (resultCode == Activity.RESULT_OK) { //만약에 정상적으로 코드가 실행 됬다면
             if (requestCode == OPEN_GALLERY) { // 갤러리가 켜졌다면
 
                 var currentImageUrl: Uri? = data?.data
                 Log.d("TAGTAG", currentImageUrl.toString())
                 save.setOnClickListener{
-                    App.prefs.myUri = currentImageUrl.toString() // SharedPreferences에 String로 변형하여 저장
+                    App.Prefs.myUri = currentImageUrl.toString() // SharedPreferences에 String로 변형하여 저장
 
                     val imageView = requireView().findViewById<ImageView>(R.id.circleImageView)
-                    Glide.with(requireContext()).load(App.prefs.myUri).circleCrop().into(imageView)
-                    Log.d("TAG(prefs)", App.prefs.myUri.toString())
+                    Glide.with(requireContext()).load(App.Prefs.myUri).circleCrop().into(imageView)
+                    Log.d("TAG(prefs)", App.Prefs.myUri.toString())
                 }
             }
         } else { // 코드가 정상적으로 실행 되지 않았다면

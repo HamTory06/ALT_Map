@@ -4,14 +4,11 @@ import android.app.Application
 
 class App : Application(){
     companion object{
-        lateinit var prefs : MySharedPreferences_Uri
-        lateinit var Prefs : MySharedPreferences_name
+        lateinit var Prefs : MySharedPreferences
     }
 
     override fun onCreate() {
-        Prefs = MySharedPreferences_name(applicationContext)
-        prefs = MySharedPreferences_Uri(applicationContext)
+        Prefs = MySharedPreferences(applicationContext)
         super.onCreate()
-
     }
 }
