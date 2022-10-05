@@ -1,7 +1,6 @@
 package com.example.alt_map
 
 import android.app.Activity
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -9,7 +8,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.navigation.fragment.findNavController
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -38,10 +36,10 @@ class WeatherFragment : Fragment() {
             .build()
 
         val service = retrofit.create(API::class.java)
-        val call = service.get(35.6632493.toLong(), 128.4141269.toLong(),"814ea831f9adecdf0164966dbecab1ce")
+        val call = service.get(35.6632493.toDouble(), 128.4141269.toDouble(),"814ea831f9adecdf0164966dbecab1ce")
         call.enqueue(object : Callback<WeatherData> {
             override fun onFailure(call: Call<WeatherData>, t: Throwable) {
-                Log.d("MainActivity", "result :" + t.message)
+                Log.d("qwer", "result :" + t.message)
 //                Log.d("MainActivity","오류")
             }
 
@@ -50,12 +48,12 @@ class WeatherFragment : Fragment() {
                 response: Response<WeatherData>
             ) {
                 val weatherResponse = response.body()
-                Log.d("MainActivity", "result: " + weatherResponse.toString())
+//                Log.d("MainActivity", "result: " + weatherResponse.toString())
+                Log.d("qwer","성공")
                 val stringBuilder =
                     "날씨: " + weatherResponse!!.weather[0].main
-                tv.text = stringBuilder
+                tv.setText("${stringBuilder}")
             }
-
         })
     }
 }
