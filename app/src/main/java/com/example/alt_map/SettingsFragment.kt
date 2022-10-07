@@ -12,6 +12,8 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
+import android.widget.TextView
+import androidx.fragment.app.FragmentManager
 import com.bumptech.glide.Glide
 
 class SettingsFragment : Fragment() {
@@ -24,9 +26,9 @@ class SettingsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val save = requireView().findViewById<Button>(R.id.save)//save 버튼 findViewById
-        val name = requireView().findViewById<EditText>(R.id.name)//name 들어가는 EditText
-        val imageView = requireView().findViewById<ImageView>(R.id.circleImageView)
+        val save = view.findViewById<Button>(R.id.save)//save 버튼 findViewById
+        val name = view.findViewById<EditText>(R.id.name)//name 들어가는 EditText
+        val imageView = view.findViewById<ImageView>(R.id.circleImageView)
         Glide.with(requireContext()).load(App.Prefs.myUri).circleCrop().into(imageView)
         name.setText(App.Prefs.myEditText)
         save.setOnClickListener {
@@ -36,9 +38,13 @@ class SettingsFragment : Fragment() {
 //            if (!(App.Prefs.myEditText.isNullOrBlank()))
 //                Log.d("(APP)TAG", App.Prefs.myEditText!!)
         }
-        val gallery = requireView().findViewById<Button>(R.id.gallery)
+        val gallery = view.findViewById<Button>(R.id.gallery)
         gallery.setOnClickListener {
             openGallery()
+        }
+        val cloud = view.findViewById<TextView>(R.id.cloud_text)
+        cloud.setOnClickListener {
+            requireFragmentManager().beginTransaction().replace(R.id.mainFrameLayout, Cloud_fragment()).commit()
         }
     }
 
