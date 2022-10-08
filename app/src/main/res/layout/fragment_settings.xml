@@ -53,4 +53,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        app:layout_constraintTop_toBottomOf="@id/save"
+        app:layout_constraintStart_toStartOf="@id/save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="임시 이동"
+        android:id="@+id/cloud_text" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

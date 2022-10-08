@@ -12,7 +12,7 @@ class MainActivity : AppCompatActivity() {
     private val OPEN_GALLERY = 1
 
     private val mainFrameLayout: FrameLayout by lazy {
-        findViewById(R.id.mainFrameLayout)
+        findViewById(R.id.mainFrameLayout)//
     }
 
     private val navigation: BottomNavigationView by lazy {
