@@ -39,20 +39,20 @@ class WeatherFragment : Fragment() {
 
         val service = retrofit.create(API::class.java)
         val call = service.get(35.6632493.toLong(), 128.4141269.toLong(),"814ea831f9adecdf0164966dbecab1ce")
-        call.enqueue(object : Callback<WeatherData> {
-            override fun onFailure(call: Call<WeatherData>, t: Throwable) {
+        call.enqueue(object : Callback<CloudData> {
+            override fun onFailure(call: Call<CloudData>, t: Throwable) {
                 Log.d("MainActivity", "result :" + t.message)
 //                Log.d("MainActivity","오류")
             }
 
             override fun onResponse(
-                call: Call<WeatherData>,
-                response: Response<WeatherData>
+                call: Call<CloudData>,
+                response: Response<CloudData>
             ) {
                 val weatherResponse = response.body()
                 Log.d("MainActivity", "result: " + weatherResponse.toString())
                 val stringBuilder =
-                    "날씨: " + weatherResponse!!.weather[0].main
+                    "날씨: " + weatherResponse!!.name
                 tv.text = stringBuilder
             }
 

@@ -3,6 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/user/git/ALT_Map/app/src/main/res/layout/cloud_item.xml" value="0.14356884057971014" />
+        <entry key="..\:/Users/user/git/ALT_Map/app/src/main/res/layout/fragment_map.xml" value="0.1" />
+        <entry key="..\:/Users/user/git/ALT_Map/app/src/main/res/layout/fragment_rain.xml" value="0.1" />
+        <entry key="..\:/Users/user/git/ALT_Map/app/src/main/res/layout/fragment_weather.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/press.xml" value="0.1245" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.21965579710144928" />
         <entry key="app/src/main/res/layout/cloud_item.xml" value="0.15625" />
