@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--안에 색상-->
+    <solid
+        android:color="@null"/>
+    <!--태두리-->
+    <corners
+        android:width="5dp"
+        android:color="#000000"/>
+</selector>
