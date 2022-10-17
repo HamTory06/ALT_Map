@@ -39,7 +39,6 @@ class Cloud_fragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
     }
 
     private fun addData() {

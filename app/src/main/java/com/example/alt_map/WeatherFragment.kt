@@ -68,7 +68,7 @@ class WeatherFragment : Fragment() {
                 call: Call<WeatherData>,
                 response: Response<WeatherData>
             ) {
-                var weather : String = "Drizzle"
+                var weather = "Drizzle"
                 val weatherResponse = response.body()
                 weather = weatherResponse!!.weather[0].main
                         when (weather) {

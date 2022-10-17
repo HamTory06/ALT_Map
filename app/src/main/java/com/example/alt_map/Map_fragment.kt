@@ -41,8 +41,8 @@ class Map_fragment : Fragment() {
         mapFragment?.getMapAsync(callback)
 
     }
-    //*임시*
-    //'onMapReady' overrides nothing    오류
+//    *임시*
+//    'onMapReady' overrides nothing    오류
 //    override fun onMapReady(googleMap: GoogleMap) {
 //        mMap = googleMap
 //
