@@ -29,7 +29,7 @@ class Map_fragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View?{
         return inflater.inflate(R.layout.fragment_map, container, false)
     }
 

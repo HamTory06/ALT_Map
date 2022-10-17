@@ -60,36 +60,61 @@ class WeatherFragment : Fragment() {
 
         val service = retrofit.create(API::class.java)
         val call = service.get(35.6632493.toLong(), 128.4141269.toLong(),"814ea831f9adecdf0164966dbecab1ce")
-        call.enqueue(object : Callback<WeatherData> {
-            override fun onFailure(call: Call<WeatherData>, t: Throwable) {
-                Log.d("qwer", "result :" + t.message)
-            }
-            override fun onResponse(
-                call: Call<WeatherData>,
-                response: Response<WeatherData>
-            ) {
-                var weather = "Drizzle"
-                val weatherResponse = response.body()
-                weather = weatherResponse!!.weather[0].main
-                        when (weather) {
-                            "Thunderstorm", "Drizzle", "Rain", "Snow" -> {
-                                requireFragmentManager().beginTransaction()
-                                    .replace(R.id.sub_frame_layout, Rain_fragment()).commit()
-                                settingclick(rain)
-                            }
-                            "Atmosphere", "Clouds" -> {
-                                requireFragmentManager().beginTransaction()
-                                    .replace(R.id.sub_frame_layout, Cloud_fragment()).commit()
-                                settingclick(cloud)
-                            }
-                            "Clear" -> {
-                                requireFragmentManager().beginTransaction()
-                                    .replace(R.id.sub_frame_layout, Sunny_fragment()).commit()
-                                settingclick(sunny)
-                            }
+        var weather : String? = null
+        if (weather == null) {
+            Log.d("상태","$weather")
+            call.enqueue(object : Callback<WeatherData> {
+                override fun onFailure(call: Call<WeatherData>, t: Throwable) {
+                    Log.d("qwer", "result :" + t.message)
+                }
+
+                override fun onResponse(
+                    call: Call<WeatherData>,
+                    response: Response<WeatherData>
+                ) {
+                    val weatherResponse = response.body()
+                    weather = weatherResponse!!.weather[0].main
+                    App.Prefs.weatherdata = weather
+                    when (weather) {
+                        "Thunderstorm", "Drizzle", "Rain", "Snow" -> {
+                            requireFragmentManager().beginTransaction()
+                                .replace(R.id.sub_frame_layout, Rain_fragment()).commit()
+                            settingclick(rain)
+                        }
+                        "Atmosphere", "Clouds" -> {
+                            requireFragmentManager().beginTransaction()
+                                .replace(R.id.sub_frame_layout, Cloud_fragment()).commit()
+                            settingclick(cloud)
+                        }
+                        "Clear" -> {
+                            requireFragmentManager().beginTransaction()
+                                .replace(R.id.sub_frame_layout, Sunny_fragment()).commit()
+                            settingclick(sunny)
                         }
                     }
-        })
+                }
+            })
+        }
+        else{
+            Log.d("상태","$weather")
+            when (weather) {
+                "Thunderstorm", "Drizzle", "Rain", "Snow" -> {
+                    requireFragmentManager().beginTransaction()
+                        .replace(R.id.sub_frame_layout, Rain_fragment()).commit()
+                    settingclick(rain)
+                }
+                "Atmosphere", "Clouds" -> {
+                    requireFragmentManager().beginTransaction()
+                        .replace(R.id.sub_frame_layout, Cloud_fragment()).commit()
+                    settingclick(cloud)
+                }
+                "Clear" -> {
+                    requireFragmentManager().beginTransaction()
+                        .replace(R.id.sub_frame_layout, Sunny_fragment()).commit()
+                    settingclick(sunny)
+                }
+            }
+        }
     }
 
     private fun settingclick(view: View) {
