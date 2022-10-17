@@ -77,3 +77,4 @@ class SettingsFragment : Fragment() {
         startActivityForResult(intent, OPEN_GALLERY)
     }
 }
+//휴롫
