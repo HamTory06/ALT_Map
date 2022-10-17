@@ -5,17 +5,17 @@ import android.content.SharedPreferences
 
 class MySharedPreferences(context:Context) {
 
-    private val prefsFilename = "prefs"
-    private val prefsKeyEdt = "myEditText"
-    private val prefsfilename = "Prefs"
-    private val prefskeyedt = "myedittext"
-    private val prefs: SharedPreferences = context.getSharedPreferences(prefsFilename,0)
+    private val Name = "Pref"
+    private val nameKey = "myEditText"
+    private val uriKey = "myEditTexts"
+    private val Prefs: SharedPreferences = context.getSharedPreferences(Name,0)
 
     var myEditText: String?
-        get() = prefs.getString(prefsFilename,"")
-        set(value) = prefs.edit().putString(prefsKeyEdt, value).apply()
+        get() = Prefs.getString(nameKey,"")
+        set(value) = Prefs.edit().putString(nameKey, value).apply()
 
     var myUri: String?
-        get() = prefs.getString(prefsfilename,"")
-        set(value) = prefs.edit().putString(prefskeyedt, value).apply()//
+        get() = Prefs.getString(uriKey, "")
+        set(value) = Prefs.edit().putString(uriKey, value).apply()
+
 }
