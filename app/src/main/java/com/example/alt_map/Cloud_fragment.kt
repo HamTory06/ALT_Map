@@ -48,4 +48,4 @@ class Cloud_fragment : Fragment() {
         mAdapter.data.add(CloudData(R.drawable.img_3,"농구", 37.54892296550104, 126.99089033876304))
         mAdapter.data.add(CloudData(R.drawable.img_4,"헬스", 37.54892296550104, 126.99089033876304))
     }
-}
+}//
