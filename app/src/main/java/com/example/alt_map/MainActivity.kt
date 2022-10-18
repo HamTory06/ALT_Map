@@ -1,6 +1,7 @@
 package com.example.alt_map
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.FrameLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -22,11 +23,12 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        supportFragmentManager.beginTransaction().add(mainFrameLayout.id, Map_fragment()).commit()
+        Log.d("상태","MainActivity_onCreate")
+        supportFragmentManager.beginTransaction().add(mainFrameLayout.id, MapFragment()).commit()
         navigation.setOnNavigationItemSelectedListener {
             replaceFragment(
                 when (it.itemId) {
-                    R.id.navigation_map -> Map_fragment()
+                    R.id.navigation_map -> MapFragment()
                     R.id.navigation_weather -> WeatherFragment()
                     else -> SettingsFragment()
                 }
@@ -36,13 +38,14 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
+        Log.d("상태","MainActivity_onBackPressed")
 //        super.onBackPressed()
         for(fragment: Fragment in supportFragmentManager.fragments) {
             if (fragment.isVisible) {
                 if(fragment is Cloud_fragment || fragment is Sunny_fragment || fragment is Rain_fragment) {
                     replaceFragment(WeatherFragment())
                 }
-                if(fragment is WeatherFragment || fragment is Map_fragment || fragment is SettingsFragment) {
+                if(fragment is WeatherFragment || fragment is MapFragment || fragment is SettingsFragment) {
                     super.onBackPressed()
                 }
             }
@@ -51,6 +54,7 @@ class MainActivity : AppCompatActivity() {
 
 
     fun replaceFragment(fragment: Fragment) {
+        Log.d("상태","MainActivity_replaceFragment")
         supportFragmentManager.beginTransaction().replace(mainFrameLayout.id, fragment).commit()
     }
 }

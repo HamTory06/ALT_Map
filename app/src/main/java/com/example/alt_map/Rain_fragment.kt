@@ -1,6 +1,7 @@
 package com.example.alt_map
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,6 +23,7 @@ class Rain_fragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        Log.d("상태","MapFragment_onCreateView")
         val v = inflater.inflate(R.layout.fragment_rain, container, false)
 
 
@@ -30,6 +32,7 @@ class Rain_fragment : Fragment() {
         return v
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        Log.d("상태","MapFragment_onViewCreated")
         super.onViewCreated(view, savedInstanceState)
 
         recyclerView = requireView().findViewById(R.id.rain_rcv_weather)

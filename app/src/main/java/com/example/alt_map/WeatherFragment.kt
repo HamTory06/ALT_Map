@@ -62,7 +62,6 @@ class WeatherFragment : Fragment() {
         val call = service.get(35.6632493.toLong(), 128.4141269.toLong(),"814ea831f9adecdf0164966dbecab1ce")
         var weather : String? = null
         if (weather == null) {
-            Log.d("상태","$weather")
             call.enqueue(object : Callback<WeatherData> {
                 override fun onFailure(call: Call<WeatherData>, t: Throwable) {
                     Log.d("qwer", "result :" + t.message)

@@ -1,6 +1,7 @@
 package com.example.alt_map
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,16 +14,19 @@ class CloudAdapter(val context: Context) : RecyclerView.Adapter<CloudAdapter.Hol
     var data = mutableListOf<CloudData>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
+        Log.d("상태","CloudAdapter_onCreateViewHolder")
         val view = LayoutInflater.from(context).inflate(R.layout.cloud_item, parent, false)
         return Holder(view)
     }
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
+        Log.d("상태","CloudAdapter_onBindViewHolder")
         val cloudData = data[position]
         holder.bind(cloudData)
     }
 
     override fun getItemCount(): Int {
+        Log.d("상태","CloudAdapter_getItemCount")
         return data.size
     }
 
