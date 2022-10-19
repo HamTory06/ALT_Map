@@ -28,9 +28,11 @@ class SunnyAdapter(val context: Context) : RecyclerView.Adapter<SunnyAdapter.Hol
 
     inner class Holder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val name = itemView.findViewById<TextView>(R.id.sunny_activity_text)
+        val ex = itemView.findViewById<TextView>(R.id.sunny_activity_text_2)
         val img = itemView.findViewById<ImageView>(R.id.profile_img)
         fun bind(sunnyData: SunnyData) {
             name.text = sunnyData.name
+            ex.text = sunnyData.ex
             img.setImageResource(sunnyData.profile)
             img.clipToOutline = true
         }

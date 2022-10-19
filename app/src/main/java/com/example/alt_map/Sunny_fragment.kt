@@ -46,11 +46,11 @@ class Sunny_fragment : Fragment() {
 
     private fun addData() {
         //축구, 산책, 외출, 야외코딩, 등산, 자전거 타기, 농구
-        mAdapter.data.add(SunnyData(R.drawable.img_7,"자전거 타기", 37.54892296550104, 126.99089033876304))
-        mAdapter.data.add(SunnyData(R.drawable.img_1,"외출", 37.54892296550104, 126.99089033876304))
-        mAdapter.data.add(SunnyData(R.drawable.img_6,"등산", 37.54892296550104, 126.99089033876304))
-        mAdapter.data.add(SunnyData(R.drawable.img_5,"야외코딩", 37.54892296550104, 126.99089033876304))
-        mAdapter.data.add(SunnyData(R.drawable.img,"축구", 37.54892296550104, 126.99089033876304))
-        mAdapter.data.add(SunnyData(R.drawable.img_3,"농구", 37.54892296550104, 126.99089033876304))
+        mAdapter.data.add(SunnyData(R.drawable.img_7,"자전거 타기", "파란 하늘이 아름다운날 친구들과 자전거를 타고 학교 주변 한바퀴 돌아보는건 어때요?",))
+        mAdapter.data.add(SunnyData(R.drawable.img_1,"외출", "",))
+        mAdapter.data.add(SunnyData(R.drawable.img_6,"등산", "",))
+        mAdapter.data.add(SunnyData(R.drawable.img_5,"야외코딩", "",))
+        mAdapter.data.add(SunnyData(R.drawable.img,"축구", "",))
+        mAdapter.data.add(SunnyData(R.drawable.img_3,"농구", "",))
     }
 }
