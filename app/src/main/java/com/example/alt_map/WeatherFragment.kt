@@ -20,6 +20,8 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 
 class WeatherFragment : Fragment() {
+
+    var weather : String? = null
     private lateinit var cloud: ImageView
     private lateinit var rain: ImageView
     private lateinit var sunny: ImageView
@@ -57,11 +59,10 @@ class WeatherFragment : Fragment() {
             .baseUrl(BaseUrl)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-
         val service = retrofit.create(API::class.java)
         val call = service.get(35.6632493.toLong(), 128.4141269.toLong(),"814ea831f9adecdf0164966dbecab1ce")
-        var weather : String? = null
         if (weather == null) {
+            Log.d("retrofit","$weather")
             call.enqueue(object : Callback<WeatherData> {
                 override fun onFailure(call: Call<WeatherData>, t: Throwable) {
                     Log.d("qwer", "result :" + t.message)
@@ -95,7 +96,7 @@ class WeatherFragment : Fragment() {
             })
         }
         else{
-            Log.d("상태","$weather")
+            Log.d("retrofit","$weather")
             when (weather) {
                 "Thunderstorm", "Drizzle", "Rain", "Snow" -> {
                     requireFragmentManager().beginTransaction()

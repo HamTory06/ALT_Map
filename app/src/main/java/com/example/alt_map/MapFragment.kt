@@ -17,23 +17,93 @@ import com.google.android.gms.maps.model.MarkerOptions
 
 class MapFragment : Fragment(){
 
-    private lateinit var mMap: GoogleMap
+    private lateinit var gym: GoogleMap
+    private lateinit var backbuilding: GoogleMap
+    private lateinit var Mainbuilding: GoogleMap
+    private lateinit var soccer: GoogleMap
+    private lateinit var dormitory: GoogleMap
+    private lateinit var basketball: GoogleMap
     lateinit var mainFrameLayout : FrameLayout
     private val callback = OnMapReadyCallback { googleMap ->
 
         val sydney = LatLng(35.662530, 128.413830)
         googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
 
-        mMap = googleMap
-        val G = LatLng(35.662397, 128.413894)
+        gym = googleMap
+        backbuilding = googleMap
+        Mainbuilding = googleMap
+        soccer = googleMap
+        dormitory = googleMap
+        basketball = googleMap
+        val A = LatLng(35.661847, 128.413808)//헬스
+        val B = LatLng(35.663300, 128.413863)//후관
+        val C = LatLng(35.662919, 128.413733)//본관
+        val D = LatLng(35.662468,128.413431)//기숙사
+        val E = LatLng(35.662601,128.413876)//축구
+        val F = LatLng(35.663032,128.413739)//농구
 
-        mMap.addMarker(
+        gym.addMarker(
             MarkerOptions()
-                .position(G)
-                .title("Marker in Sydney")
+                .position(A)
+                .title("헬스")
         )
 
-        mMap.setOnMarkerClickListener {
+        gym.setOnMarkerClickListener {
+            Toast.makeText(context, it.title, Toast.LENGTH_SHORT).show()
+            return@setOnMarkerClickListener true
+        }
+        //--------------------------------------------------------------------
+        backbuilding.addMarker(
+            MarkerOptions()
+                .position(B)
+                .title("후관")
+        )
+
+        backbuilding.setOnMarkerClickListener {
+            Toast.makeText(context, it.title, Toast.LENGTH_SHORT).show()
+            return@setOnMarkerClickListener true
+        }
+        //--------------------------------------------------------------------
+        Mainbuilding.addMarker(
+            MarkerOptions()
+                .position(C)
+                .title("본관")
+        )
+
+        Mainbuilding.setOnMarkerClickListener {
+            Toast.makeText(context, it.title, Toast.LENGTH_SHORT).show()
+            return@setOnMarkerClickListener true
+        }
+        //--------------------------------------------------------------------
+        soccer.addMarker(
+            MarkerOptions()
+                .position(E)
+                .title("축구")
+        )
+
+        soccer.setOnMarkerClickListener {
+            Toast.makeText(context, it.title, Toast.LENGTH_SHORT).show()
+            return@setOnMarkerClickListener true
+        }
+        //--------------------------------------------------------------------
+        dormitory.addMarker(
+            MarkerOptions()
+                .position(D)
+                .title("기숙사")
+        )
+
+        dormitory.setOnMarkerClickListener {
+            Toast.makeText(context, it.title, Toast.LENGTH_SHORT).show()
+            return@setOnMarkerClickListener true
+        }
+//        //--------------------------------------------------------------------
+        basketball.addMarker(
+            MarkerOptions()
+                .position(F)
+                .title("농구")
+        )
+
+        basketball.setOnMarkerClickListener {
             Toast.makeText(context, it.title, Toast.LENGTH_SHORT).show()
             return@setOnMarkerClickListener true
         }
